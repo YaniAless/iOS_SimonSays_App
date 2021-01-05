@@ -45,6 +45,7 @@
 		5B0B754F25A3F4B900B6D43C = {
 			isa = PBXGroup;
 			children = (
+				5BB504DA25A4BE9C00F3CD4A /* README.md */,
 				5B0B755A25A3F4B900B6D43C /* SimonSays */,
 				5B0B755925A3F4B900B6D43C /* Products */,
 			);
@@ -70,7 +71,6 @@
 				5B0B756925A3F4BB00B6D43C /* Info.plist */,
 				5BB504D525A48BAF00F3CD4A /* GameViewController.swift */,
 				5BB504D625A48BAF00F3CD4A /* GameViewController.xib */,
-				5BB504DA25A4BE9C00F3CD4A /* README.md */,
 			);
 			path = SimonSays;
 			sourceTree = "<group>";
