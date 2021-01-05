@@ -24,6 +24,9 @@
                     <state key="normal" title="Yellow">
                         <color key="titleColor" systemColor="systemYellowColor"/>
                     </state>
+                    <connections>
+                        <action selector="touchYellowButton:" destination="-1" eventType="touchUpInside" id="p2Z-WQ-21O"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apl-o8-Tzl">
                     <rect key="frame" x="162" y="427.5" width="63" height="41"/>
@@ -31,11 +34,17 @@
                     <state key="normal" title="Green">
                         <color key="titleColor" systemColor="systemGreenColor"/>
                     </state>
+                    <connections>
+                        <action selector="touchGreenButton:" destination="-1" eventType="touchUpInside" id="63i-e4-OUD"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MgZ-yM-plW">
                     <rect key="frame" x="233" y="427.5" width="46" height="41"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <state key="normal" title="Blue"/>
+                    <connections>
+                        <action selector="touchBlueButton:" destination="-1" eventType="touchUpInside" id="3tS-H4-mrC"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ay9-vb-9Hd">
                     <rect key="frame" x="287" y="427.5" width="41" height="41"/>
@@ -43,6 +52,9 @@
                     <state key="normal" title="Red">
                         <color key="titleColor" systemColor="systemRedColor"/>
                     </state>
+                    <connections>
+                        <action selector="touchRedButton:" destination="-1" eventType="touchUpInside" id="oDQ-co-QW4"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's play !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2b-L4-frW">
                     <rect key="frame" x="151.5" y="144" width="111" height="29"/>
