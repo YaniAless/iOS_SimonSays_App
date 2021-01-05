@@ -28,6 +28,7 @@
 		5B0B757325A3F5A200B6D43C /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		5BB504D525A48BAF00F3CD4A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		5BB504D625A48BAF00F3CD4A /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
+		5BB504DA25A4BE9C00F3CD4A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +70,7 @@
 				5B0B756925A3F4BB00B6D43C /* Info.plist */,
 				5BB504D525A48BAF00F3CD4A /* GameViewController.swift */,
 				5BB504D625A48BAF00F3CD4A /* GameViewController.xib */,
+				5BB504DA25A4BE9C00F3CD4A /* README.md */,
 			);
 			path = SimonSays;
 			sourceTree = "<group>";
