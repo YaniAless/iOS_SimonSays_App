@@ -11,7 +11,7 @@ import CoreBluetooth
 class HomeViewController: UIViewController {
     
     var cbCentralManager : CBCentralManager!
-    var arduino : CBPeripheral? 
+    var arduino : CBPeripheral?
     
     @IBOutlet weak var pairingStatusLabel: UILabel!
     @IBOutlet weak var startPlayButton: UIButton!
@@ -37,6 +37,7 @@ class HomeViewController: UIViewController {
         case .poweredOn:
             pairingStatusLabel.text = Constants.PAIRING_MSG
         default:
+            print("toto")
             pairingStatusLabel.text = Constants.BLUETOOTH_OFF_MSG
             pairingStatusLabel.textColor = .systemRed
         }
@@ -58,32 +59,31 @@ extension HomeViewController : CBCentralManagerDelegate, CBPeripheralDelegate{
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         guard peripheral.name != nil else { return }
-        
+
         if peripheral.name == Constants.MODULE_NAME {
+            cbCentralManager = central
             cbCentralManager.stopScan()
             cbCentralManager.connect(peripheral, options: nil)
             self.arduino = peripheral
-            
         }
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+
         if peripheral.state == .connected {
             print("Connected to \(Constants.MODULE_NAME)")
             pairingStatusLabel.text = Constants.PAIRED_MSG
             pairingStatusLabel.textColor = .systemGreen
             startPlayButton.isHidden = false
-            
-            peripheral.delegate = self
-            peripheral.discoverServices([Constants.SERVICE_UUID])
+            self.arduino = peripheral
         }
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        print(error.debugDescription)
         pairingStatusLabel.text = Constants.PERIPHERAL_OFF
         pairingStatusLabel.textColor = .systemRed
         startPlayButton.isHidden = true
     }
-    
-    
+     
 }
