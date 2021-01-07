@@ -12,9 +12,9 @@ class HomeViewController: UIViewController {
     
     var cbCentralManager : CBCentralManager!
     var arduino : CBPeripheral?
+    var arduinoCharac: CBCharacteristic?
     
-    let serviceUUID = CBUUID(string: "FFE0")
-    let characUUID = CBUUID(string: "FFE1")
+    
     
     @IBOutlet weak var pairingStatusLabel: UILabel!
     @IBOutlet weak var startPlayButton: UIButton!
@@ -24,8 +24,7 @@ class HomeViewController: UIViewController {
         cbCentralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
+    override func viewDidAppear(_ animated: Bool) {        
         startPlayButton.isHidden = true
     }
 
@@ -78,8 +77,8 @@ extension HomeViewController : CBCentralManagerDelegate, CBPeripheralDelegate{
             pairingStatusLabel.textColor = .systemGreen
             startPlayButton.isHidden = false
             
-            peripheral.delegate = self
-            peripheral.discoverServices([serviceUUID])
+            // peripheral.delegate = self
+            // peripheral.discoverServices([Constants.SERVICE_UUID])
         }
     }
     
@@ -89,26 +88,5 @@ extension HomeViewController : CBCentralManagerDelegate, CBPeripheralDelegate{
         startPlayButton.isHidden = true
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        if let service = peripheral.services?.first(where: {$0.uuid == serviceUUID }) {
-            peripheral.discoverCharacteristics([characUUID], for: service)
-        }
-    }
-
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-        if let characteristic = service.characteristics?.first(where: { $0.uuid == characUUID }) {
-            peripheral.setNotifyValue(true, for: characteristic)
-            arduino = peripheral
-            //let test = Data("b".utf8) data example str to data
-            //peripheral.writeValue(test, for: characteristic, type: CBCharacteristicWriteType.withoutResponse) // Send the msg to the device
-            //print(peripheral.readValue(for: characteristic))
-        }
-    }
-
-    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        if let recievedValue = characteristic.value{
-            let str = String(decoding: recievedValue, as: UTF8.self)
-            //print(str)
-        }
-    }
+    
 }

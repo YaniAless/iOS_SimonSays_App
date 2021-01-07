@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreBluetooth
 
 struct Constants {
     
@@ -14,5 +15,8 @@ struct Constants {
     static let PAIRED_MSG = "Connected to the device"
     static let BLUETOOTH_OFF_MSG = "Please turn on bluetooth"
     static let PERIPHERAL_OFF = "Peripheral's connection lost,\n please reconnect.."
+    
+    static let SERVICE_UUID = CBUUID(string: "FFE0")
+    static let CHARAC_UUID = CBUUID(string: "FFE1")
     
 }
