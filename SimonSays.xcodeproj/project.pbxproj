@@ -16,7 +16,6 @@
 		5BB504D725A48BAF00F3CD4A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB504D525A48BAF00F3CD4A /* GameViewController.swift */; };
 		5BB504D825A48BAF00F3CD4A /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BB504D625A48BAF00F3CD4A /* GameViewController.xib */; };
 		5BB504DE25A5099800F3CD4A /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB504DD25A5099800F3CD4A /* AppConstants.swift */; };
-		5BB504EC25A6A1A400F3CD4A /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB504EB25A6A1A400F3CD4A /* Device.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +31,6 @@
 		5BB504D625A48BAF00F3CD4A /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		5BB504DA25A4BE9C00F3CD4A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5BB504DD25A5099800F3CD4A /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
-		5BB504EB25A6A1A400F3CD4A /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +64,6 @@
 		5B0B755A25A3F4B900B6D43C /* SimonSays */ = {
 			isa = PBXGroup;
 			children = (
-				5BB504EA25A6A19000F3CD4A /* Bluetooth */,
 				5B0B755B25A3F4B900B6D43C /* AppDelegate.swift */,
 				5B0B755D25A3F4B900B6D43C /* SceneDelegate.swift */,
 				5B0B757225A3F5A200B6D43C /* HomeViewController.swift */,
@@ -79,14 +76,6 @@
 				5BB504DD25A5099800F3CD4A /* AppConstants.swift */,
 			);
 			path = SimonSays;
-			sourceTree = "<group>";
-		};
-		5BB504EA25A6A19000F3CD4A /* Bluetooth */ = {
-			isa = PBXGroup;
-			children = (
-				5BB504EB25A6A1A400F3CD4A /* Device.swift */,
-			);
-			path = Bluetooth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,7 +152,6 @@
 				5BB504D725A48BAF00F3CD4A /* GameViewController.swift in Sources */,
 				5B0B755C25A3F4B900B6D43C /* AppDelegate.swift in Sources */,
 				5B0B755E25A3F4B900B6D43C /* SceneDelegate.swift in Sources */,
-				5BB504EC25A6A1A400F3CD4A /* Device.swift in Sources */,
 				5B0B757425A3F5A200B6D43C /* HomeViewController.swift in Sources */,
 				5BB504DE25A5099800F3CD4A /* AppConstants.swift in Sources */,
 			);

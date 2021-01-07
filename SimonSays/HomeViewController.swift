@@ -11,10 +11,7 @@ import CoreBluetooth
 class HomeViewController: UIViewController {
     
     var cbCentralManager : CBCentralManager!
-    var arduino : CBPeripheral?
-    var arduinoCharac: CBCharacteristic?
-    
-    
+    var arduino : CBPeripheral? 
     
     @IBOutlet weak var pairingStatusLabel: UILabel!
     @IBOutlet weak var startPlayButton: UIButton!
@@ -77,8 +74,8 @@ extension HomeViewController : CBCentralManagerDelegate, CBPeripheralDelegate{
             pairingStatusLabel.textColor = .systemGreen
             startPlayButton.isHidden = false
             
-            // peripheral.delegate = self
-            // peripheral.discoverServices([Constants.SERVICE_UUID])
+            peripheral.delegate = self
+            peripheral.discoverServices([Constants.SERVICE_UUID])
         }
     }
     
