@@ -36,13 +36,25 @@ class HomeViewController: UIViewController {
         
     }
     
+    func updateUIWithManagerState(state: CBManagerState) {
+        switch state {
+        case .poweredOn:
+            pairingStatusLabel.text = Constants.PAIRING_MSG
+        default:
+            pairingStatusLabel.text = Constants.BLUETOOTH_OFF_MSG
+            pairingStatusLabel.textColor = .systemRed
+        }
+    }
+    
 }
 
 // BLUETOOTH
 extension HomeViewController : CBCentralManagerDelegate, CBPeripheralDelegate{
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        if(central.state == .poweredOn){
+        updateUIWithManagerState(state: central.state)
+        
+        if central.state == .poweredOn {
             central.scanForPeripherals(withServices: nil, options: nil)
             print("Looking for SimonModule..")
         }
@@ -63,12 +75,18 @@ extension HomeViewController : CBCentralManagerDelegate, CBPeripheralDelegate{
         if peripheral.state == .connected {
             print("Connected to \(Constants.MODULE_NAME)")
             pairingStatusLabel.text = Constants.PAIRED_MSG
-            pairingStatusLabel.textColor = .green
+            pairingStatusLabel.textColor = .systemGreen
             startPlayButton.isHidden = false
             
             peripheral.delegate = self
             peripheral.discoverServices([serviceUUID])
         }
+    }
+    
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        pairingStatusLabel.text = Constants.PERIPHERAL_OFF
+        pairingStatusLabel.textColor = .systemRed
+        startPlayButton.isHidden = true
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
@@ -83,14 +101,14 @@ extension HomeViewController : CBCentralManagerDelegate, CBPeripheralDelegate{
             arduino = peripheral
             //let test = Data("b".utf8) data example str to data
             //peripheral.writeValue(test, for: characteristic, type: CBCharacteristicWriteType.withoutResponse) // Send the msg to the device
-            print(peripheral.readValue(for: characteristic))
+            //print(peripheral.readValue(for: characteristic))
         }
     }
 
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if let recievedValue = characteristic.value{
             let str = String(decoding: recievedValue, as: UTF8.self)
-            print(str)
+            //print(str)
         }
     }
 }
