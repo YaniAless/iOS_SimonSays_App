@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController" customModule="SimonSays" customModuleProvider="target">
             <connections>
+                <outlet property="scoreValueLabel" destination="ln6-4N-rXQ" id="2Ct-ps-9Ga"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7PI-y3-3eF">
+                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7PI-y3-3eF">
                     <rect key="frame" x="87" y="427.5" width="67" height="41"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <state key="normal" title="Yellow">
@@ -68,15 +69,30 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ln6-4N-rXQ">
+                    <rect key="frame" x="198.5" y="578" width="17.5" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nt5-Vy-V90">
+                    <rect key="frame" x="123.5" y="536" width="167" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="toC-Uh-Kp7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7Sl-BH-41q"/>
+                <constraint firstItem="Nt5-Vy-V90" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="94S-NX-i8x"/>
                 <constraint firstItem="Ay9-vb-9Hd" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="EEF-Di-tXT"/>
                 <constraint firstItem="W2b-L4-frW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="FLw-2u-VZ6"/>
                 <constraint firstItem="7PI-y3-3eF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="87" id="IVe-ed-dbq"/>
                 <constraint firstItem="7PI-y3-3eF" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="LYP-tn-skt"/>
+                <constraint firstItem="Nt5-Vy-V90" firstAttribute="top" secondItem="apl-o8-Tzl" secondAttribute="bottom" constant="67.5" id="Tbc-nR-EcR"/>
+                <constraint firstItem="ln6-4N-rXQ" firstAttribute="top" secondItem="Nt5-Vy-V90" secondAttribute="bottom" constant="8" symbolic="YES" id="WBs-FU-tha"/>
                 <constraint firstItem="Ay9-vb-9Hd" firstAttribute="leading" secondItem="MgZ-yM-plW" secondAttribute="trailing" constant="8" symbolic="YES" id="X6X-Vq-SXI"/>
                 <constraint firstItem="W2b-L4-frW" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="ZbE-Nn-pfZ"/>
                 <constraint firstItem="MgZ-yM-plW" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="b2b-g8-Sgn"/>
@@ -84,11 +100,15 @@
                 <constraint firstItem="MgZ-yM-plW" firstAttribute="leading" secondItem="apl-o8-Tzl" secondAttribute="trailing" constant="8" symbolic="YES" id="kPQ-ss-p5K"/>
                 <constraint firstItem="toC-Uh-Kp7" firstAttribute="top" secondItem="W2b-L4-frW" secondAttribute="bottom" constant="33" id="v28-m9-qch"/>
                 <constraint firstItem="apl-o8-Tzl" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="vGi-rL-two"/>
+                <constraint firstItem="ln6-4N-rXQ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zMB-Py-vnj"/>
             </constraints>
             <point key="canvasLocation" x="140.57971014492756" y="144.64285714285714"/>
         </view>
     </objects>
     <resources>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
