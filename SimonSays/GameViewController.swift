@@ -17,6 +17,10 @@ class GameViewController: UIViewController, CBPeripheralDelegate {
     
     var startGame = true
     @IBOutlet weak var scoreValueLabel: UILabel!
+    @IBOutlet weak var redButton: UIButton!
+    @IBOutlet weak var blueButton: UIButton!
+    @IBOutlet weak var greenButton: UIButton!
+    @IBOutlet weak var yellowButton: UIButton!
     
     
     init(peripheral: CBPeripheral) {
@@ -46,25 +50,36 @@ class GameViewController: UIViewController, CBPeripheralDelegate {
         self.actionToSend = Data("y".utf8)
         if let serv = self.service {
             peripheral.discoverCharacteristics([Constants.CHARAC_UUID], for: serv)
+            enableActionButtonAfterPress(state: false)
         }
     }
     @IBAction func touchGreenButton(_ sender: Any) {
         self.actionToSend = Data("g".utf8)
         if let serv = self.service {
             peripheral.discoverCharacteristics([Constants.CHARAC_UUID], for: serv)
+            enableActionButtonAfterPress(state: false)
         }
     }
     @IBAction func touchBlueButton(_ sender: Any) {
         self.actionToSend = Data("b".utf8)
         if let serv = self.service {
             peripheral.discoverCharacteristics([Constants.CHARAC_UUID], for: serv)
+            enableActionButtonAfterPress(state: false)
         }
     }
     @IBAction func touchRedButton(_ sender: Any) {
         self.actionToSend = Data("r".utf8)
         if let serv = self.service {
             peripheral.discoverCharacteristics([Constants.CHARAC_UUID], for: serv)
+            enableActionButtonAfterPress(state: false)
         }
+    }
+    
+    func enableActionButtonAfterPress(state: Bool) {
+        redButton.isEnabled = state
+        blueButton.isEnabled = state
+        greenButton.isEnabled = state
+        yellowButton.isEnabled = state
     }
     
     
@@ -74,6 +89,8 @@ class GameViewController: UIViewController, CBPeripheralDelegate {
             // peripheral.discoverCharacteristics([Constants.characUUID], for: service)
         }
     }
+    
+    peripheral
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if let characteristic = service.characteristics?.first(where: { $0.uuid == Constants.CHARAC_UUID }) {
@@ -86,17 +103,20 @@ class GameViewController: UIViewController, CBPeripheralDelegate {
             }
             if let actionToSend = self.actionToSend {
                 peripheral.writeValue(actionToSend, for: characteristic, type: CBCharacteristicWriteType.withoutResponse) // Send the msg to the device
+                peripheral.readValue(for: characteristic)
             }
-            peripheral.readValue(for: characteristic)
         }
     }
 
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if let recievedValue = characteristic.value {
             let recievedMsg = String(decoding: recievedValue, as: UTF8.self)
-            if recievedMsg.contains("scr:") {
+            print(recievedMsg)
+            if recievedMsg == "r" || recievedMsg == "b" || recievedMsg == "g" || recievedMsg == "y" {
+                enableActionButtonAfterPress(state: true)
+            } else if recievedMsg.contains("trk:") {
                 let extractedValue = recievedMsg.components(separatedBy: ":")
-                print("ok -> \(extractedValue[1])")
+                scoreValueLabel.text = extractedValue[1]
             } else if recievedMsg == "lost" {
                 dismiss(animated: false)
             }

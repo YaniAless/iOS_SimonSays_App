@@ -28,8 +28,7 @@ class HomeViewController: UIViewController {
     @IBAction func touchPlayButton(_ sender: Any) {
         guard let arduino = self.arduino else { return }
         
-        self.present(GameViewController(peripheral: arduino), animated: true)
-        
+        self.present(GameViewController(peripheral: arduino), animated: true)        
     }
     
     func updateUIWithManagerState(state: CBManagerState) {
@@ -37,7 +36,6 @@ class HomeViewController: UIViewController {
         case .poweredOn:
             pairingStatusLabel.text = Constants.PAIRING_MSG
         default:
-            print("toto")
             pairingStatusLabel.text = Constants.BLUETOOTH_OFF_MSG
             pairingStatusLabel.textColor = .systemRed
         }

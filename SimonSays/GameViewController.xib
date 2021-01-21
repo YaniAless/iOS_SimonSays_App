@@ -10,8 +10,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController" customModule="SimonSays" customModuleProvider="target">
             <connections>
+                <outlet property="blueButton" destination="MgZ-yM-plW" id="1TG-kk-7xF"/>
+                <outlet property="greenButton" destination="apl-o8-Tzl" id="CYB-7S-V6U"/>
+                <outlet property="redButton" destination="Ay9-vb-9Hd" id="4rg-zB-9rp"/>
                 <outlet property="scoreValueLabel" destination="ln6-4N-rXQ" id="2Ct-ps-9Ga"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="yellowButton" destination="7PI-y3-3eF" id="9Lb-ac-y6P"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -42,7 +46,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MgZ-yM-plW">
                     <rect key="frame" x="233" y="427.5" width="46" height="41"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                    <state key="normal" title="Blue"/>
+                    <state key="normal" title="Blue">
+                        <color key="titleColor" systemColor="systemBlueColor"/>
+                    </state>
                     <connections>
                         <action selector="touchBlueButton:" destination="-1" eventType="touchUpInside" id="3tS-H4-mrC"/>
                     </connections>
@@ -52,6 +58,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <state key="normal" title="Red">
                         <color key="titleColor" systemColor="systemRedColor"/>
+                        <color key="titleShadowColor" systemColor="systemRedColor"/>
                     </state>
                     <connections>
                         <action selector="touchRedButton:" destination="-1" eventType="touchUpInside" id="oDQ-co-QW4"/>
@@ -108,6 +115,9 @@
     <resources>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
