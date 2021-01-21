@@ -12,8 +12,9 @@ class GameViewController: UIViewController, CBPeripheralDelegate {
     var peripheral : CBPeripheral
     var characteristic : CBCharacteristic?
     var service: CBService?
-    
+    var currentScore = 0
     var actionToSend: Data?
+    var home: HomeViewController
     
     var startGame = true
     @IBOutlet weak var scoreValueLabel: UILabel!
@@ -23,8 +24,8 @@ class GameViewController: UIViewController, CBPeripheralDelegate {
     @IBOutlet weak var yellowButton: UIButton!
     
     
-    init(peripheral: CBPeripheral) {
-        
+    init(peripheral: CBPeripheral, home: HomeViewController) {
+        self.home = home
         self.peripheral = peripheral
         super.init(nibName: nil, bundle: nil)
     }
@@ -89,8 +90,6 @@ class GameViewController: UIViewController, CBPeripheralDelegate {
             // peripheral.discoverCharacteristics([Constants.characUUID], for: service)
         }
     }
-    
-    peripheral
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if let characteristic = service.characteristics?.first(where: { $0.uuid == Constants.CHARAC_UUID }) {
@@ -115,10 +114,16 @@ class GameViewController: UIViewController, CBPeripheralDelegate {
             if recievedMsg == "r" || recievedMsg == "b" || recievedMsg == "g" || recievedMsg == "y" {
                 enableActionButtonAfterPress(state: true)
             } else if recievedMsg.contains("trk:") {
-                let extractedValue = recievedMsg.components(separatedBy: ":")
-                scoreValueLabel.text = extractedValue[1]
+                let extractedScoreValue = recievedMsg.components(separatedBy: ":")
+                scoreValueLabel.text = extractedScoreValue[1]
+                if let score = Int(extractedScoreValue[1]) {
+                    currentScore = score
+                }
             } else if recievedMsg == "lost" {
-                dismiss(animated: false)
+                let defaults = UserDefaults.standard
+                defaults.set("\(currentScore + 25)", forKey: "highscore")
+                home.setScoreLabelFromUsersDefault()
+                dismiss(animated: true)
             }
         }
     }

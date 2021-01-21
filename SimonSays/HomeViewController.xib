@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="SimonSays" customModuleProvider="target">
             <connections>
+                <outlet property="highScoreLabel" destination="weN-1u-VPl" id="5XN-RP-ux5"/>
                 <outlet property="pairingStatusLabel" destination="EZD-fV-75h" id="BpG-cU-PaD"/>
                 <outlet property="startPlayButton" destination="vr6-2w-wHU" id="3o5-q2-NTx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -48,18 +49,43 @@
                         <action selector="touchPlayButton:" destination="-1" eventType="touchUpInside" id="Tg2-HB-M5X"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your best score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2b-Ik-XMt">
+                    <rect key="frame" x="121" y="644" width="172.5" height="31.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="weN-1u-VPl">
+                    <rect key="frame" x="176.5" y="691.5" width="61.5" height="29"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3d-TB-fFz">
+                    <rect key="frame" x="166.5" y="742" width="81" height="30"/>
+                    <state key="normal" title="Reset score"/>
+                    <connections>
+                        <action selector="touchResetButton:" destination="-1" eventType="touchUpInside" id="MZ1-DF-AAF"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vr6-2w-wHU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="4yf-Ue-DwB"/>
+                <constraint firstItem="o2b-Ik-XMt" firstAttribute="top" secondItem="vr6-2w-wHU" secondAttribute="bottom" constant="54" id="GN2-xQ-ycG"/>
                 <constraint firstItem="oea-I4-EVF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JAV-9g-uPU"/>
                 <constraint firstItem="oea-I4-EVF" firstAttribute="top" secondItem="kJX-e3-b9I" secondAttribute="bottom" constant="8" symbolic="YES" id="Kak-dI-KC8"/>
+                <constraint firstItem="T3d-TB-fFz" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Lyy-QO-8HA"/>
                 <constraint firstItem="kJX-e3-b9I" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="140" id="PCs-aI-Czg"/>
+                <constraint firstItem="weN-1u-VPl" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Po9-1e-ZY2"/>
+                <constraint firstItem="T3d-TB-fFz" firstAttribute="top" secondItem="weN-1u-VPl" secondAttribute="bottom" constant="21.5" id="QU8-SK-WjW"/>
                 <constraint firstItem="EZD-fV-75h" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="XeU-Kq-7Uk"/>
+                <constraint firstItem="o2b-Ik-XMt" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Zwy-FM-R6h"/>
                 <constraint firstItem="vr6-2w-wHU" firstAttribute="top" secondItem="EZD-fV-75h" secondAttribute="bottom" constant="86" id="g5G-Qq-BZ1"/>
                 <constraint firstItem="EZD-fV-75h" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="gZ7-ZN-Jug"/>
                 <constraint firstItem="kJX-e3-b9I" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hSd-EJ-9Rd"/>
+                <constraint firstItem="weN-1u-VPl" firstAttribute="top" secondItem="o2b-Ik-XMt" secondAttribute="bottom" constant="16" id="wG3-K5-Ugn"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="77.678571428571431"/>
         </view>

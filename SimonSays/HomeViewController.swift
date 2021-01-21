@@ -15,7 +15,9 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var pairingStatusLabel: UILabel!
     @IBOutlet weak var startPlayButton: UIButton!
+    @IBOutlet weak var highScoreLabel: UILabel!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cbCentralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
@@ -23,12 +25,20 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {        
         startPlayButton.isHidden = true
+        setScoreLabelFromUsersDefault()
+
     }
 
     @IBAction func touchPlayButton(_ sender: Any) {
         guard let arduino = self.arduino else { return }
         
-        self.present(GameViewController(peripheral: arduino), animated: true)        
+        self.present(GameViewController(peripheral: arduino, home: self), animated: true)        
+    }
+    
+    @IBAction func touchResetButton(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        defaults.set("0", forKey: "highscore")
+        setScoreLabelFromUsersDefault()
     }
     
     func updateUIWithManagerState(state: CBManagerState) {
@@ -39,6 +49,12 @@ class HomeViewController: UIViewController {
             pairingStatusLabel.text = Constants.BLUETOOTH_OFF_MSG
             pairingStatusLabel.textColor = .systemRed
         }
+    }
+    
+    func setScoreLabelFromUsersDefault() {
+        let defaults = UserDefaults.standard
+        let score = defaults.string(forKey: "highscore")
+        highScoreLabel.text = score
     }
     
 }
