@@ -121,7 +121,7 @@ class GameViewController: UIViewController, CBPeripheralDelegate {
                 }
             } else if recievedMsg == "lost" {
                 let defaults = UserDefaults.standard
-                defaults.set("\(currentScore + 25)", forKey: "highscore")
+                defaults.set("\(currentScore)", forKey: "highscore")
                 home.setScoreLabelFromUsersDefault()
                 dismiss(animated: true)
             }
